@@ -5,14 +5,14 @@ import CartItem from './CartItem/CartItem'
 import { Link } from 'react-router-dom'
 const Cart = ({ cart, handleUpdateCartQty,handleRemoveFromCart,handleEmptyCart }) => {
     const classes = useStyles()
-    const EmptyCart = () => {
-        return <>
+    const EmptyCart = () => (
+         <>
             <Typography variant="subtitle1" >You have no items in the cart</Typography>
             <Link to="/" className={classes.link}>Start adding some</Link>!
         </>
-    }
-    const FilledCart = () => {
-        return <>
+    )
+    const FilledCart = () => (
+         <>
             <Grid container spacing={3}>
                 {cart.line_items.map((item) => (
                     <Grid item xs={12} sm={4} key={item.id}>
@@ -25,10 +25,10 @@ const Cart = ({ cart, handleUpdateCartQty,handleRemoveFromCart,handleEmptyCart }
                     Subtotal:{cart.subtotal.formatted_with_symbol}
                 </Typography>
                 <Button variant="contained" size="large" color="secondary" type="button" className={classes.emptyButton} onClick={handleEmptyCart}>Empty Cart</Button>
-                <Button variant="contained" size="large" color="primary" type="button" className={classes.checkoutButton}>Checkout</Button>
+                <Button component={Link} to="/checkout" variant="contained" size="large" color="primary" type="button" className={classes.checkoutButton}>Checkout</Button>
             </div>
         </>
-    }
+    )
     if (!cart.line_items) return 'loading...'
     return (
         <Container>
