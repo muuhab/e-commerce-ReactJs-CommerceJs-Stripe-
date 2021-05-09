@@ -2,11 +2,14 @@ import React from 'react'
 import {Container,Typography,Button,Grid} from '@material-ui/core'
 import useStyles from './styles'
 import CartItem from './CartItem/CartItem'
-
+import {Link} from 'react-router-dom'
 const Cart = ({cart}) => {
     const classes=useStyles()
     const EmptyCart=()=>{
-        return <Typography variant="subtitle1" >You have no items in the cart</Typography>
+        return <>
+        <Typography variant="subtitle1" >You have no items in the cart</Typography>
+        <Link to="/" className={classes.link}>Start adding some</Link>!
+        </>
     }
     const FilledCart=()=>{
         return <>
@@ -26,7 +29,7 @@ const Cart = ({cart}) => {
         </div>
         </>
     }
-
+    if(!cart.line_items) return 'loading...'
     return (
         <Container>
             <div className={classes.toolbar}/>

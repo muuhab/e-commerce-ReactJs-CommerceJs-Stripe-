@@ -17,6 +17,9 @@ export default makeStyles((theme) => ({
     display: 'flex',
     textDecoration: 'none',
   },
+  link: {
+    textDecoration: 'none',
+  },
   image: {
     marginRight: '10px',
   },
