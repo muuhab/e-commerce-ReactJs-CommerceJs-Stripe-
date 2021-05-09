@@ -8,7 +8,7 @@ const FormInput = ({name,label,required}) => {
         <Grid item xs={12} sm={6}>
             <Controller
             render={({ field }) => (
-                <TextField {...field} placeholder={label} />
+                <TextField {...field}  label={label} fullWidth  />
             )}
                 control={control}
                 name={name}
